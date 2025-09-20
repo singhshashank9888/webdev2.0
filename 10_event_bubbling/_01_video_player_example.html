@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button>
+        Display Video
+    </button>
+    <div class="hidden">
+        <video src="rabbit320.mp4" type="video/webm">
+            <p>Your browser doesnt support html
+                <a href="rabbit320.mp4">Link to video </a>instead.
+            </p>
+        </video>
+    </div>
+    <script>
+        const btn = document.querySelector("button");
+        const box = document.querySelector("div")
+        const video = document.querySelector("video");
+
+        btn.addEventListener("click", () => box.classList.remove("hidden"));
+        // video.addEventListener("click", () => video.play());
+        video.addEventListener("click", (event) =>{
+             
+            event.stopPropagation();
+            video.play()});
+        box.addEventListener("click", () => box.classList.add("hidden"));
+
+    </script>
+</body>
+
+</html>

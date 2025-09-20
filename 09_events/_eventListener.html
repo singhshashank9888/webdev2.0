@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+</head>
+
+<body>
+    <button>Click Me</button>
+
+    <script>
+        const controller=new AbortController;
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+        const btn=document.querySelector("button")
+    //    btn.addEventListener("click", () => {
+    //         document.body.style.backgroundColor = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+    //     },{
+    //         signal : controller.signal //pass an abort signal to this handler
+    //     })
+    //    btn.addEventListener("click",()=>{controller.abort();
+    //     btn.textContent="Disabled"
+    //    })
+ // removes any/all event handlers associated with this controller
+btn.onclick=()=>{
+     const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+  document.body.style.backgroundColor = rndCol;
+}
+
+    </script>
+</body>
+
+</html>

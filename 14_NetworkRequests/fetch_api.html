@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Starting Point </title>
+    <!-- <style>
+
+        html,
+        pre {
+            font-family: sans-serif;
+        }
+
+        body {
+            width: 500px;
+            margin: 0 auto;
+            background-color: rgb(91, 62, 125);
+            color: rgb(215, 201, 201);
+
+        }
+
+        label {
+            width: 200px;
+            margin-right: 33px;
+        }
+
+        select {
+            width: 300px;
+            padding: 5px;
+        }
+
+        pre {
+            line-height: 3;
+            letter-spacing: 0.05rem;
+            padding: 1rem;
+            background-color: rgb(102, 79, 100);
+        }
+    </style> -->
+<style>
+    /* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #f0f0f0;
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+h2 {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0 2rem;
+    color: #dcdcdccc;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+label {
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+select {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+select:hover,
+select:focus {
+    background-color: #e3e3e3;
+}
+
+pre {
+    background-color: #fff;
+    color: #222;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    white-space: pre-wrap;
+    user-select: text;
+    min-height: 200px;
+}
+
+</style>
+</head>
+
+
+<body>
+    <h1>Fetch starting point</h1>
+
+    <form>
+        <label for="verseChoose">Choose a verse:</label>
+        <select name="verseChoose" id="verseChoose">
+
+            <option>Verse 1</option>
+            <option>Verse 2</option>
+            <option>Verse 3</option>
+            <option>Verse 4</option>
+        </select>
+
+    </form>
+    <h2>
+        The Conqueror Worm, <em> Edgar Allen Poe, 1843<em>
+    </h2>
+    <pre></pre>
+    <script>
+        const verseChoose = document.querySelector("select");
+        const poemDisplay = document.querySelector("pre");
+
+        verseChoose.addEventListener("change", () => {
+            verseDisplay(verseChoose.value);
+        });
+        function verseDisplay(verse) {
+            verse = verse.replace(" ", "").toLowerCase();
+            const url = `${verse}.txt`;
+
+            fetch(url)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then((text) => {
+                    poemDisplay.textContent = text;
+                })
+                .catch((error) => {
+                    poemDisplay.textContent = `Couldn't fetch text ${error}`;
+                })
+        }
+        verseDisplay("Verse 1");
+        verseChoose.value = "Verse 1";
+
+    </script>
+</body>
+
+</html>

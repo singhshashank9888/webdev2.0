@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greetings</title>
+</head>
+<body>
+    <button>Press Me For Greetings </button>
+    <div id="greeting"></div>
+
+    <script>
+        const btn=document.querySelectorAll("button");
+
+        document.addEventListener("click",greet);
+        function greet() {
+            const name=prompt("What is your name ?");
+            const greeting=document.querySelector("#greeting");
+
+            greeting.textContent=`Hi ${name} how are you ?`
+        }
+    </script>
+</body>
+</html>

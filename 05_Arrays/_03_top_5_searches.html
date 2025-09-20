@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 searches</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h2>Live Output</h2>
+    <div class="output">
+        <input type="text">
+        <button>Search</button>
+        <ul>
+        </ul>
+    </div>
+    <script>
+        const list = document.querySelector(".output ul");;
+        const search_box = document.querySelector(".output input");
+        const search_btn = document.querySelector(".output button")
+        list.textContent = "";
+        const search_history = [];
+
+        search_btn.onclick = () => {
+            if (search_box.value != "") {
+                search_history.push(search_box.value);
+                //empty the list to  avoid duplicate entries 
+                list.textContent = "";
+                for (const itemText of search_history) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = itemText;
+                    list.appendChild(listItem);
+                }
+                //if lenghth more than 5 then pop last item
+                if(search_history.length>=5){
+                    search_history.shift();
+                }
+                search_box.value = "";
+                search_box.focus();
+            }
+        }
+    </script>
+</body>
+
+</html>

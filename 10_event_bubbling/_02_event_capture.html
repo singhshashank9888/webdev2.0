@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <button>Click Me!</button>
+    </div>
+    <pre class="output"></pre>
+
+    <script>
+        const box=document.querySelector(".container");
+        const button=document.querySelector("button");
+        const output=document.querySelector(".output");
+
+        function handleClick(e) {
+            output.textContent+=`You clicked on ${e.currentTarget.tagName}\n`;
+        }
+        document.body.addEventListener("click",handleClick,{capture:true})
+        box.addEventListener("click",handleClick,{capture:true});
+        button.addEventListener("click",handleClick)
+
+        
+
+
+    </script>
+
+</body>
+
+</html>

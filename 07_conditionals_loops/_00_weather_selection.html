@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+
+</head>
+
+<body>
+    <div>
+
+        <label for="theme">
+            <select id="theme">
+                <option value="">Select theme</option>
+                <option value="black">Black</option>
+                <option value="white">White</option>
+            </select>
+        </label>
+    </div>
+    <div>
+
+        <label for="weather">Select the type of Weather</label>
+        <select id="weather">
+            <option value="">--Make a choice--</option>
+            <option value="sunny">Sunny</option>
+            <option value="rainy">Rainy</option>
+            <option value="snowing">Snowing</option>
+            <option value="overcast">Overcast</option>
+        </select>
+        <p></p>
+    </div>
+    <script>
+        const weatherSelect = document.querySelector("#weather");
+
+        const para = document.querySelector("p");
+
+        weatherSelect.addEventListener("change", setWeather);
+
+        function setWeather() {
+            const choice = weatherSelect.value;
+            switch (choice) {
+                case "sunny":
+                    para.textContent = "its sunny hehe";
+                    break;
+                case "rainy":
+                    para.textContent = "its raingin lol";
+                    break;
+                case "snowing":
+                    para.textContent = "its snowing hehe";
+                    break;
+                case "overcast":
+                    para.textContent = "its overcast hehe";
+                    break;
+                default:
+                    para.textContent = "";
+                    break;
+            }
+
+        }
+        const themeSelect = document.querySelector("#theme");
+
+        themeSelect.addEventListener("change", setColor)
+
+        function setColor() {
+            themeSelect.value === "black" ? updateColor("black", "white") : updateColor("white", "black");
+        }
+        function updateColor(bg_col, txt_col) {
+            document.body.style.backgroundColor = bg_col;
+            document.body.style.color = txt_col;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Seq.</title>
+</head>
+
+<body>
+    <label for="number">Enter a number</label>
+    <input id="number" type="number">
+    <button>Generate sequence</button>
+    <p>Output : </p>
+    <!-- USING CONTINUE STATEMENT -->
+
+    <script>
+        const input = document.querySelector("input")
+        const btn = document.querySelector("button")
+        const para = document.querySelector("p")
+        btn.addEventListener("click", () => {
+            para.textContent = "";
+            const num = Number(input.value);
+
+            input.value = "";
+            input.focus();
+            for (i = 1; i <= num; i++) {
+                const sqRoot= Math.sqrt(i);
+                if(Math.floor(sqRoot)!==sqRoot){
+                    continue;
+                }
+                para.textContent += ` ${i}`;
+            }
+        })
+
+    </script>
+    <!-- <script>
+        const input = document.querySelector("input")
+        const btn = document.querySelector("button")
+        const para = document.querySelector("p")
+        btn.addEventListener("click", () => {
+            para.textContent="";
+            const num = Number(input.value);
+            const end = Math.floor(Math.sqrt(num));
+            input.value = "";
+            input.focus();
+            for (i = 1; i <= end; i++) {
+
+                para.textContent += ` ${i * i}`;
+            }
+        })
+
+    </script> -->
+
+</body>
+
+</html>

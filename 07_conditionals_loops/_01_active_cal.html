@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Calendar</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body{
+            background-color: rgb(114, 107, 107);
+            color: white;
+            /* box-sizing: border-box;; */
+        }
+        li{
+            display: block;
+            float: left;
+            width: 25%;
+            background-color: purple;
+            padding: 5px;
+            border: 2px solid white;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <label for="month">Select Month:</label>
+    <select name="month" id="month">
+
+        <option value="Jan">Jan</option>
+        <option value="Feb">Feb</option>
+        <option value="Mar">Mar</option>
+        <option value="Apr">Apr</option>
+        <option value="May">May</option>
+        <option value="Jun">Jun</option>
+        <option value="Jul">Jul</option>
+        <option value="Aug">Aug</option>
+        <option value="Sep">Sep</option>
+        <option value="Oct">Oct</option>
+        <option value="Nov">Nov</option>
+        <option value="Dec">Dec</option>
+    </select>
+    <h1></h1>
+    <ul></ul>
+
+    <script>
+        const select = document.querySelector("select");
+        const h1 = document.querySelector("h1")
+        const list = document.querySelector("ul");
+
+        select.addEventListener("change", () => {
+            const choice = select.value;
+            createCalendar(choice);
+        });
+
+        function createCalendar(month) {
+            let days = 31;
+            //conditional
+            if (month === "Apr" || month === "Jun" || month === "Sep" || month === "Nov") {
+                days = 30;
+            }
+            else if (month === "Feb") {
+                days = 29;
+            }
+            list.textContent = "";
+            h1.textContent = month;
+            for (let i = 1; i <= days; i++) {
+
+                const listItem = document.createElement("li");
+                listItem.textContent = i;
+                list.appendChild(listItem);
+
+            }
+        }
+        select.value = "Jan";
+        createCalendar("Jan");
+
+
+    </script>
+</body>
+
+</html>

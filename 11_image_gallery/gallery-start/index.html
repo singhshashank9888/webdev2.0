@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Image gallery</title>
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    h1 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    body {
+      width: 640px;
+      margin: 0 auto;
+    }
+
+    .full-img {
+      position: relative;
+      display: block;
+      width: 640px;
+      height: 480px;
+    }
+
+    button {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      cursor: pointer;
+      background: rgba(150, 150, 150, 0.6);
+
+    }
+
+    .overlay {
+      position: absolute;
+      width: 640px;
+      height: 480px;
+      background-color: rgba(0, 0, 0, 0);
+      left: 0;
+      top: 0;
+
+    }
+
+    .thumb-bar img {
+      display: flex;
+      width: 20%;
+      float: left;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Image gallery example</h1>
+
+  <div class="full-img">
+    <img class="displayed-img" src="pic1.jpg" alt="Closeup of a human eye">
+    <div class="overlay"></div>
+    <button class="dark">Darken</button>
+  </div>
+
+  <div class="thumb-bar">
+
+
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

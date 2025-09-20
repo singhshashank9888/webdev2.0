@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+</head>
+
+<body>
+    <button>Click Me</button>
+    <button onclick="alert('Hello, this is my old-fashioned event handler!');">
+  Press me
+</button> 
+<!-- never use inline listerners -->
+
+    <script>
+        const controller = new AbortController;
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+        const btn = document.querySelector("button")
+        function backgroundCol(number) {
+
+            const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+            document.body.style.backgroundColor = rndCol;
+            btn.textContent="mewo mewow";
+        }
+        function backgroundCol1(number) {
+            document.body.style.backgroundColor = "black";
+        }
+        btn.addEventListener("click",backgroundCol);
+        btn.addEventListener("click",backgroundCol1);
+//event handler properties like onclick or ondbclick can handle only one function at a time 
+        // btn.ondblclick=backgroundCol;
+        // btn.ondblclick=backgroundCol1;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    div {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+        font-size: 14px;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 14px;
+        margin-left: 10px;
+        background-color: #4cd26b;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #373131;
+    }
+</style>
+
+</head>
+
+<body>
+    <h1>My shopping list</h1>
+    <div>
+        <label for="item">Enter a new item:</label>
+        <input type="text" name="item" id="item">
+        <button>Add item</button>
+    </div>
+    <ul>
+
+    </ul>
+
+    <script>
+        const input = document.querySelector("input");
+        const btn = document.querySelector("button");
+        const ul = document.querySelector("ul");
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                btn.click();
+            }
+        });
+        btn.addEventListener("click", () => {
+
+            const List = document.createElement("li");
+            const span = document.createElement("span");
+            const btnDel = document.createElement("button");
+
+            const refValue = input.value;
+            input.focus();
+            input.value = "";
+
+            List.appendChild(span);
+            List.appendChild(btnDel);
+
+            span.textContent = refValue;
+            btnDel.textContent = "Delete";
+            ul.appendChild(List);
+
+            btnDel.addEventListener("click", () => {
+                ul.removeChild(List);
+            })
+        });
+    </script>
+</body>
+
+</html>

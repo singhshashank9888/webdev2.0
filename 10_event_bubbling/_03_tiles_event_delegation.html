@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colored Tiles</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 2fr);
+            grid-auto-rows: 100px;
+        }
+
+        .tile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+                font-size: 24px;
+
+            border: 1px solid #ccc;
+            cursor: pointer;
+                transition: background-color 0.3s ease;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="tile">1</div>
+        <div class="tile">2</div>
+        <div class="tile">3</div>
+        <div class="tile">4</div>
+        <div class="tile">1</div>
+        <div class="tile">2</div>
+        <div class="tile">3</div>
+        <div class="tile">4</div>
+        <div class="tile">1</div>
+        <div class="tile">2</div>
+        <div class="tile">3</div>
+        <div class="tile">4</div>
+        <div class="tile">1</div>
+        <div class="tile">2</div>
+        <div class="tile">3</div>
+        <div class="tile">4</div>
+
+        <script>
+            function random(num) {
+                return Math.floor(Math.random() * (num + 1));
+            }
+            function bgChange() {
+                const rgbCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+                return rgbCol;
+            }
+            const container = document.querySelector("#container");
+
+
+            container.addEventListener("click", (event) => {
+                event.target.style.backgroundColor = bgChange();
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>
