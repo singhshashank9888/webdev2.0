@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 5 searches</title>
-    <script src="script.js"></script>
+     
 </head>
 
 <body>
@@ -17,12 +17,16 @@
         </ul>
     </div>
     <script>
-        const list = document.querySelector(".output ul");;
+        const list = document.querySelector(".output ul");
         const search_box = document.querySelector(".output input");
-        const search_btn = document.querySelector(".output button")
+        const search_btn = document.querySelector(".output button");
         list.textContent = "";
         const search_history = [];
-
+          search_box.addEventListener("keydown",(event)=>{
+                if(event.key==="Enter"){
+                    search_btn.click();
+                }
+            })
         search_btn.onclick = () => {
             if (search_box.value != "") {
                 search_history.push(search_box.value);

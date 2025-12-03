@@ -18,15 +18,16 @@
         const output = document.querySelector("#output")
 
         function handleClick(e) {
+             
             output.textContent += `You clicked on ${e.currentTarget.tagName} element\n`;
         }
 //         e.currentTarget: Refers to the element on which the event listener is attached (not necessarily the element that was actually clicked — that's e.target).
 
-// tagName: Returns the uppercase tag name of the element (DIV, BUTTON, etc.).
+// tagName: Returns the uppercase tag name of the element (DIV, BUTTON,BODY.).
         const container = document.querySelector("#container");
         const button = document.querySelector("button");
         const body = document.querySelector("body");
-
+        
         body.addEventListener("click",handleClick)
         button.addEventListener("click",handleClick)
         container.addEventListener("click",handleClick)

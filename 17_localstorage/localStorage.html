@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalStorage Example</title>
+</head>
+<body>
+  <h2 id="greeting"></h2>
+  <input type="text" id="nameInput" placeholder="Enter your name">
+  <button id="saveBtn">Save Name</button>
+
+  <script>
+    const input = document.getElementById("nameInput");
+    const btn = document.getElementById("saveBtn");
+    const greeting = document.getElementById("greeting");
+
+    // Check if name already exists in localStorage
+    const savedName = localStorage.getItem("username");
+    if (savedName) {
+      greeting.textContent = `Welcome back, ${savedName}! 👋`;
+    }
+
+    // Save new name when button is clicked
+    btn.addEventListener("click", () => {
+      const name = input.value.trim();
+      if (name) {
+        localStorage.setItem("username", name);
+        greeting.textContent = `Hello, ${name}! 👋 (Saved!)`;
+        input.value = "";
+      }
+    });
+  </script>
+</body>
+</html>

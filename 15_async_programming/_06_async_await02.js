@@ -10,7 +10,7 @@ async function fetchData() {
 
     }
     catch (error) {
-        console.error(`Couldnt get product ${response.status}`);
+        console.error(`Couldnt get product ${error.message}`);
     }
 }
 const promise=fetchData();

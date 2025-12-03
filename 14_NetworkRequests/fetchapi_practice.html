@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicing</title>
+</head>
+
+<body>
+    <label for="select">Select A verse:</label>
+    <select name="select" id="select">
+        <option>verse 1</option>
+        <option>verse 2</option>
+        <option>verse 3</option>
+        <option>verse 4</option>
+    </select>
+    <pre></pre>
+    <script>
+        const select = document.querySelector("select");
+        const poemDisplay = document.querySelector("pre");
+
+        select.addEventListener("change", () => {
+
+            verseDisplay(select.value);
+        })
+        function verseDisplay(verse) {
+            verse = verse.replace(" ", "").toLowerCase();
+            const url = `${verse}.txt`;
+
+            fetch(url)
+                .then((response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTPS ERROR ${response.status}`);
+                    }
+                    return response.text()
+                }))
+                .then((text) => {
+                    poemDisplay.textContent = text;
+                })
+                .catch((error) => {
+                    poemDisplay.textContent = `Couldn't fetch text ${error}`;
+                })
+        }
+        select.value = "verse 1";
+        verseDisplay("Verse 1");
+        selec.focus();
+
+    </script>
+
+</body>
+
+</html>

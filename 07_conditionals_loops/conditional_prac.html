@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>caaalll</title>
+</head>
+<style>
+    body {
+        padding: 0;
+        font-family: sans-serif;
+        background-color: whitesmoke;
+    }
+
+    label {
+        font-weight: bolder;
+        font-size: larger;
+
+    }
+
+    #months {
+        padding: 0px 50px;
+        font-size: larger;
+        border-radius: 10px;
+    }
+
+    #months:hover {
+        cursor: pointer;
+        transition: 0.2s ease;
+        box-shadow: 2px 2px 2px rgb(116, 76, 29);
+
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        list-style-type: none;
+
+    }
+
+    li {
+
+        border: 1px solid black;
+        
+        margin: 0;
+        padding: 30px;
+    }
+    li:hover{
+        cursor: pointer;
+        background-color:rgb(219, 216, 216) ;
+        transition: 0.2s ease;
+        padding-top: 29px;
+         
+        
+    }
+
+    option:hover {
+        color: rgb(116, 76, 29);
+        background-color: beige;
+    }
+</style>
+
+<body>
+
+    <label for="months">Select a month :
+
+        <select name="months" id="months">
+
+            <option value="Jan">Jan</option>
+            <option value="Feb">Feb</option>
+            <option value="Mar">Mar</option>
+            <option value="Apr">Apr</option>
+            <option value="May">May</option>
+            <option value="Jun">Jun</option>
+            <option value="Jul">Jul</option>
+            <option value="Aug">Aug</option>
+            <option value="Sep">Sep</option>
+            <option value="Oct">Oct</option>
+            <option value="Nov">Nov</option>
+            <option value="Dec">Dec</option>
+
+        </select>
+    </label>
+
+
+
+    <h1></h1>
+    <ul></ul>
+    <script>
+        const month_select = document.querySelector("#months");
+        const list = document.querySelector("ul");
+        const h1 = document.querySelector("h1");
+        month_select.addEventListener("change", () => {
+            let days = 0;
+            const month = month_select.value;
+            list.textContent = "";
+            h1.textContent = month;
+
+            //conditional
+            if (month === "Apr" || month === "Jun" || month === "Sep" || month === "Nov") {
+                days = 30;
+            }
+            else if (month === "Feb") {
+                days = 29;
+            }
+            else {
+                days = 31;
+            }
+            const item = document.createElement("li");
+            for (let i = 1; i <= days; i++) {
+                listItem = document.createElement("li");
+                listItem.textContent = i;
+                list.appendChild(listItem);
+            }
+        })
+        month_select.value = "Jan";
+        month_select.dispatchEvent(new Event("change"));
+
+    </script>
+</body>
+
+</html>

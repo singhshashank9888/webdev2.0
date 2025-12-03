@@ -25,7 +25,11 @@
         const para = document.querySelector("p");
         const input = document.querySelector("input");
         const btn = document.querySelector("button");
-
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                btn.click();
+            }
+        })
         btn.addEventListener("click", findNum);
 
         function findNum() {
@@ -35,15 +39,14 @@
             input.value = "";
             input.focus();
             for (const contact of contacts) {
-               const splitContact= contact.split(":");
-               if(splitContact[0].toLowerCase()===searchValue){
-                para.textContent=`${splitContact[0]} contact is ${splitContact[1]}`;
-                break;
-               }
+                const splitContact = contact.split(":");
+                if (splitContact[0].toLowerCase() === searchValue) {
+                    para.textContent = `${splitContact[0]} contact is ${splitContact[1]}`;
+                    break;
+                }
             }
-            if(para.textContent==="")
-            {
-                para.textContent="Contact not found";
+            if (para.textContent === "") {
+                para.textContent = "Contact not found";
             }
 
 

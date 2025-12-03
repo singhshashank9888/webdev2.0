@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top </title>
+
+</head>
+
+<body>
+    <h2>Live output</h2>
+
+
+    <input>
+    <button>Search</button>
+    <ul>
+
+    </ul>
+
+    <script>
+        const search_box = document.querySelector("input");
+        const search_btn = document.querySelector("button");
+
+        const list = document.querySelector("ul");
+
+        search_box.focus();
+        search_box.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                search_btn.click();
+            }
+        })
+        const searchHistory = [];
+        search_btn.addEventListener("click", () => {
+            if (search_box.value != "") {
+                searchHistory.unshift(search_box.value);
+                list.textContent = "";
+                for (const itemText of searchHistory) {
+                    const listItem = document.createElement("li");
+                    listItem.textContent=itemText;
+                    list.appendChild(listItem);
+
+                }
+                if(searchHistory.length>=5){
+                    searchHistory.shift();
+                }
+                 search_box.value = "";
+                search_box.focus();
+            }
+
+
+
+        })
+    </script>
+
+</body>
+
+</html>

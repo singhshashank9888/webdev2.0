@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <input type="text">
+    <button>
+        Click me
+    </button>
+
+    <script>
+        const input = document.querySelector("input");
+        const btn = document.querySelector("button");
+        const heading = document.querySelector("h1");
+        const savedName = localStorage.getItem("username2");
+        if (savedName) {
+            heading.textContent = `Welcome back ${savedName}`;
+        }
+        input.addEventListener("keydown", (e) => {
+            if(e.key==="Enter"){
+                btn.click();
+            }
+        })
+        btn.addEventListener("click", () => {
+            const name = input.value;
+            if (name) {
+                localStorage.setItem("username2", name);
+                heading.textContent = `Hello, ${name}! 👋 (Saved!)`;
+                input.value = "";
+            }
+        })
+    </script>
+</body>
+
+</html>

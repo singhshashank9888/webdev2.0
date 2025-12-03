@@ -10,15 +10,24 @@
     </style>
 </head>
 
-<body style="background-color: black; color: wheat;" >
+<body style="background-color: black; color: wheat;">
     <h1>Number guessing game</h1>
     <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you
         if your guess was too high or too low.</p>
 
+    <!-- id:
+
+Uniquely identifies a single element in the HTML document.
+Should be used only once per page.
+Used for direct selection in JavaScript and for linking with labels.
+class:
+
+Can be shared by multiple elements.
+Used for grouping elements for styling (CSS) or selection (JavaScript). -->
     <div class="form">
 
         <label for="guessField">Enter a guess:</label>
-        <input type="number" min="1" max="100" required id="guessField" class="guessField">
+        <input type="number" min="1" max="100" id="guessField" class="guessField" required>
         <input type="submit" value="Submit Guess" class="guessSubmit">
 
     </div>
@@ -28,7 +37,7 @@
         <p class="lowOrHi"></p>
     </div>
     <script>
-        const RandomNum = Math.floor(Math.random() * 100) + 1;
+        let RandomNum = Math.floor(Math.random() * 100) + 1;
 
         const guesses = document.querySelector(".guesses");
         const lastResult = document.querySelector(".lastResult");
@@ -110,7 +119,7 @@
             guessField.value = ""; //empties the guess field
             guessField.focus(); //focusses again on the guess field for the next field to be entered 
 
-            lastResult.style.backgroundColor="white";
+            lastResult.style.backgroundColor = "white";
             RandomNum = Math.floor(Math.random() * 100) + 1;
         }
     </script>

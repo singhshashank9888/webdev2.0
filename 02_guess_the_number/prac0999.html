@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The number hero</title>
+   
+</head>
+
+<body>
+    <div class="heading">
+        <h3>Guessing the Number </h3>
+    </div>
+    <div class="content">
+        <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell
+            you
+            if your guess was too high or too low.</p>
+    </div>
+    <div class="inputSection">
+        <label for="guess">Enter the guess:</label>
+        <input type="number" id="guess" class="guessField" max="100" min="1">
+        <input type="submit" name="submit" id="submitGuess" class="submitField">
+    </div>
+    <div class="outputSection">
+
+        <p class="prevGuess"></p>
+        <p class="GuessResult"></p>
+        <p class="remarkSection"></p>
+        <!-- after the correct guess Start new game button is created  -->
+    </div>
+
+    <script>
+        let randomNum = Math.floor(Math.random() * 100) + 1;
+
+        const inputSection = document.querySelector(".guessField");
+        const submit = document.querySelector(".submitField");
+
+
+        const prevGuess = document.querySelector(".prevGuess");
+        const guessResult = document.querySelector(".GuessResult");
+        const remarkSection = document.querySelector(".remarkSection");
+
+
+
+        // actually here text content of input tag is string even when its type is number so convert it into number
+        let guessCount = 0;
+        inputSection.addEventListener("keydown", (event) => {
+            if (event.key === 'Enter') {
+                submit.click();
+            }
+        })
+        inputSection.addEventListener("input", (event) => {
+            const value = Number(inputSection.value);
+            submit.disabled = !(value >= 1 && value <= 100);
+        })
+
+        submit.addEventListener("click", () => {
+            guessCount = guessCount + 1;
+            const inputNumber = Number(inputSection.value);
+            if (guessCount === 1) {
+
+                prevGuess.textContent = `Previous Guesses: `;
+            }
+            prevGuess.textContent = `${prevGuess.textContent}  ${inputNumber}`;
+            if (randomNum === inputNumber && guessCount <= 10) {
+                guessResult.textContent = `Correct guess`;
+                guessResult.style.backgroundColor = "green";
+                setGameOver();
+
+
+            }
+            if (randomNum > inputNumber && guessCount < 10) {
+
+                guessResult.textContent = `Wrong guess`;
+                guessResult.style.backgroundColor = "red";
+                remarkSection.textContent = `Number is Small. Try Higher Number`;
+
+            }
+            if (randomNum < inputNumber && guessCount < 10) {
+                guessResult.textContent = `Wrong guess`;
+                guessResult.style.backgroundColor = "red";
+                remarkSection.textContent = `Number is Big. Try Lower Number`;
+
+            }
+            else if (guessCount > 10) {
+                guessResult.textContent = `Game Over`;
+                setGameOver();
+            }
+
+            inputSection.value = ""; //empties the guess field
+            inputSection.focus(); //focusses again on the guess field for the next field to be entered 
+
+        });
+
+        function setGameOver() {
+            remarkSection.textContent = "";
+            const startNewGame = document.createElement("button");
+            remarkSection.appendChild(startNewGame);
+            startNewGame.textContent = "Start New Game";
+            submit.disabled = true;
+            inputSection.disabled = true;
+            startNewGame.addEventListener("click", () => {
+                submit.disabled = false;
+                inputSection.disabled = false;
+
+                prevGuess.textContent = "";
+                guessResult.textContent = "";
+
+                guessCount = 0;
+                remarkSection.removeChild(startNewGame);
+
+                randomNum = Math.floor(Math.random() * 100) + 1;
+            });
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

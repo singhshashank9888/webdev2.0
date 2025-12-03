@@ -16,19 +16,19 @@
             return Math.floor(Math.random() * (number + 1));
         }
         const btn=document.querySelector("button")
-    //    btn.addEventListener("click", () => {
-    //         document.body.style.backgroundColor = `rgb(${random(255)} ${random(255)} ${random(255)})`;
-    //     },{
-    //         signal : controller.signal //pass an abort signal to this handler
-    //     })
-    //    btn.addEventListener("click",()=>{controller.abort();
-    //     btn.textContent="Disabled"
-    //    })
+       btn.addEventListener("click", () => {
+            document.body.style.backgroundColor = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+        },{
+            signal : controller.signal //pass an abort signal to this handler
+        })
+       btn.addEventListener("click",()=>{controller.abort();
+        btn.textContent="Disabled"
+       })
  // removes any/all event handlers associated with this controller
-btn.onclick=()=>{
-     const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
-  document.body.style.backgroundColor = rndCol;
-}
+// btn.onclick=()=>{
+//      const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+//   document.body.style.backgroundColor = rndCol;
+// }
 
     </script>
 </body>

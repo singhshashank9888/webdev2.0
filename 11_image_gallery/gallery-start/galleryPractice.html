@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMG GAL</title>
+</head>
+<style>
+    body {
+
+        width: 640px;
+    }
+
+    .container {
+
+
+        position: relative;
+    }
+
+    .full-img {}
+
+    .thumb-bar {}
+
+    .thumb-bar img {
+        width: 20%;
+    }
+
+    button {
+        position: absolute;
+        left: 1px;
+       
+
+    }
+
+    .overlay {
+        position: absolute;
+        width: 640px;
+        height: 480px;
+        background-color: rgba(0, 0, 0, 0);
+        left: 0;
+        top: 0;
+
+    }
+</style>
+
+<body>
+    <h1>Image Gallery</h1>
+    <div class="container">
+
+        <div class="full-img">
+            <img class="displayed-img" src="pic1.jpg" alt="an aye closeUp">
+            <div class="overlay"></div>
+            <button class="dark">Darken</button>
+        </div>
+        <div class="thumb-bar">
+
+        </div>
+    </div>
+    <script>
+        const thumb_bar = document.querySelector(".thumb-bar");
+        const displayedImage = document.querySelector(".displayed-img");
+        const img_src = ["pic1.jpg", "pic2.jpg", "pic3.jpg", "pic4.jpg", "pic5.jpg"];
+        const img_alt = ["Human Eye", "Clouds ", "FLower", "Egyptians", "Butterfly"];
+        const btn = document.querySelector("button");
+        const overlay = document.querySelector(".overlay");
+        for (let i = 0; i < 5; i++) {
+            const img_new = document.createElement('img');
+            img_new.setAttribute('src', img_src[i]);
+            img_new.setAttribute('alt', img_alt[i]);
+            thumb_bar.appendChild(img_new);
+        }
+
+        thumb_bar.addEventListener("click", (event) => {
+            displayedImage.src = event.target.src;
+            displayedImage.alt = event.target.alt;
+        })
+        btn.addEventListener("click", () => {
+            if (btn.getAttribute("class") === "dark") {
+                btn.setAttribute("class", "light");
+                btn.textContent = "Lighten";
+                overlay.style.backgroundColor = "rgb(0 0 0 / 50%)";
+            }
+            else {
+                btn.setAttribute("class", "dark");
+                btn.textContent = "Darken";
+                overlay.style.backgroundColor = "rgb(0 0 0 / 0%)";
+
+            }
+        })
+    </script>
+</body>
+
+</html>

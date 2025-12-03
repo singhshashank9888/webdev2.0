@@ -25,5 +25,5 @@ fetchPromise
         return response.json();
     })
     .then((data)=>{
-        console.log(data[0].name);
+        console.log(data[4].name);
     });

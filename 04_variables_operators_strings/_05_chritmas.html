@@ -2,18 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christmas
-    </title>
-    <script src="_99_scritp.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christmas
+  </title>
+   
 </head>
 
 <body>
   <div class="output" style="min-height: 125px;">
-  <ul></ul>
-</div>
+    <ul></ul>
+  </div>
+  <script>
+    const list = document.querySelector('.output ul');
+    list.textContent = "";
+    const greetings = ['Happy Birthday!',
+      'Merry Christmas my love',
+      'A happy Christmas to all the family',
+      'You\'re all I want for Christmas',
+      'Get well soon'];
 
+    for (const greeting of greetings) {
+      // Your conditional test needs to go inside the parentheses
+      // in the line below, replacing what's currently there
+      if (greeting) {
+        const listItem = document.createElement('li');
+        listItem.textContent = greeting;
+        list.appendChild(listItem);
+      }
+    }
+
+  </script>
 </body>
 
 </html>

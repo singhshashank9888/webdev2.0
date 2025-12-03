@@ -86,9 +86,9 @@ console.log(strmeow.slice(4, 7)) // 4 included 7 not included
 console.log(strmeow.slice(4))// 4 included last included 
 
 const radData = "My NaMe Is MuD";
-console.log(radData.toLowerCase());
+console.log(radData.toLowerCase()); 
 console.log(radData.toUpperCase());
 
 strmeow = strmeow.replaceAll("HERO", "ZERO");
-console.log(strmeow)
+console.log(strmeow);
 

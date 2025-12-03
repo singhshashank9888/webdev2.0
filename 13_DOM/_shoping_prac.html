@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sshopp list</title>
+</head>
+<style>
+    body {
+        background-color: bisque;
+        color: black;
+        font-family: sans-serif;
+    }
+
+    .del_Item {
+        color: rgb(230, 223, 226);
+        border-radius: 20px;
+        padding: 5px 10px;
+        background-color: rgb(88, 73, 5);
+    }
+    
+    ol {
+        font-weight: bold;
+        
+    }
+    
+    input {
+        border: 2px solid black;
+        border-radius: 100px;
+        padding: 10px;
+    }
+    
+    .submit {
+        padding: 10px;
+        border-radius: 100px;
+        border: 2px solid black;
+        
+    }
+    
+    li {
+        display: flex;
+        list-style-type: decimal;
+        align-content: center;
+        justify-content: space-around;
+    }
+</style>
+
+<body>
+    <h1>My Shopping List</h1>
+    <label for="input_sect">Enter a new item:</label>
+    <input id="input_sect" type="text">
+    <button class="submit">Add Item</button>
+    <ol>
+
+    </ol>
+
+    <script>
+        const input = document.querySelector("input");
+        const btn = document.querySelector(".submit");
+
+        const list = document.querySelector("ol");
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                btn.click();
+            }
+        });
+        input.focus();
+        btn.addEventListener("click", () => {
+            //removes whitespaces
+            if (input.value.trim() === "") return;
+            const listItem = document.createElement("li");
+            const span = document.createElement("span");
+            const del_Item = document.createElement("button");
+
+            span.textContent = input.value;
+            del_Item.setAttribute("class", "del_Item");
+            del_Item.textContent = "Delete";
+            del_Item.addEventListener("click", () => {
+                list.removeChild(listItem);
+            })
+            listItem.appendChild(span);
+            listItem.appendChild(del_Item);
+            list.appendChild(listItem);
+            input.value = "";
+            input.focus();
+        })
+    </script>
+
+</body>
+
+</html>

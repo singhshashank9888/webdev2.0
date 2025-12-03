@@ -29,7 +29,7 @@ console.log(random);
 random.pop();
 console.log(random);
 
-//to get first element 
+//to get /remove first element 
 console.log(random.shift());
 console.log(random);
 
@@ -79,7 +79,7 @@ const cities_data = `"Manc:hester", "Liver:pool", "Edin:burgh", "Carli:sle", "ia
 const city_data=cities_data.split(",");
 
 for (const data of city_data) {
-    console.log(data);
+    console.log(data.split(":"));
 }
 
 // to join again , in join any separator can be used 
